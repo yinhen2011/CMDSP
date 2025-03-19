@@ -1,4 +1,5 @@
 # CMDSP
+[![DOI](https://zenodo.org/badge/951099404.svg)](https://doi.org/10.5281/zenodo.15049533)
 The source code is for the paper:
 
 Enhanced Texture Classification through a Completed Multi-Domain Shrinkage Pattern,
