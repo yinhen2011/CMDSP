@@ -1,5 +1,4 @@
 # CMDSP
-For texture classification
 The source code is for the paper:
 
 Enhanced Texture Classification through a Completed Multi-Domain Shrinkage Pattern,
