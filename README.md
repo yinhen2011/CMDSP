@@ -19,7 +19,8 @@ Running Environment: Windows 11 pro, Matlab R2024a
 
 Reproduce the experimental results for Outex_TC_00010:
 
-You also can download the Outex_TC_00010 dataset from http://www.outex.oulu.fi/index.php?page=classification
+You also can download the Outex_TC_00010 dataset from http://www.outex.oulu.fi/index.php?page=classification;
+Or you can download the Outex_TC_00010 dataset from Baidu cloud disk link(permanent)-- https://pan.baidu.com/s/1QikrYrFDDOHeoZ31cXscTQ?pwd=tdnk extraction code: tdnk 
 
 In the downloaded file 'Outex_TC_00010', the sub-file 'images' includes all the training and test images, and the sub-file '000' incudes the documents specifying the split of the training and test sets.
 
