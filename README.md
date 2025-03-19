@@ -20,7 +20,6 @@ Running Environment: Windows 11 pro, Matlab R2024a
 
 Reproduce the experimental results for Outex_TC_00010:
 
-Outex_TC_00010 dataset is included in the folder Datasets.
 You also can download the Outex_TC_00010 dataset from http://www.outex.oulu.fi/index.php?page=classification
 
 In the downloaded file 'Outex_TC_00010', the sub-file 'images' includes all the training and test images, and the sub-file '000' incudes the documents specifying the split of the training and test sets.
