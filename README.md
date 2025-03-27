@@ -26,3 +26,15 @@ Or you can download the Outex_TC_00010 dataset from Baidu cloud disk link(perman
 In the downloaded file 'Outex_TC_00010', the sub-file 'images' includes all the training and test images, and the sub-file '000' incudes the documents specifying the split of the training and test sets.
 
 Run DomeCodesForOutex10_CMDSP.m to reproduce the reported results.
+
+## Citation
+
+Please consider citing our paper, if you found our work interesting and useful.
+```
+@article{CMDSP,
+  title={Enhanced Texture Classification through a Completed Multi-Domain Shrinkage Pattern},
+  author={Bin Li, Xiaochun Xu, and Q.M.Jonathan Wu},
+  journal={The Visual computer},
+  url={https://github.com/yinhen2011/CMDSP/},
+  year={2025}
+}
