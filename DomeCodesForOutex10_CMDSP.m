@@ -3,6 +3,7 @@ clc;
 
 
 % extract Outex_TC_00010 to the "rootpic" folder
+% Load the dataset path, such as Outex_TC_00020, UMD, and UIUC
 rootpic = 'E:\TextureClassification\outex\Outex_TC_00010\';
 picNum = 4320;
 
@@ -17,7 +18,7 @@ load patternMappingriu2_3_16;
 % P=24;
 % load patternMappingriu2_3_24;
 
-% 
+% Load the multi-scale threshold
 load Outex10_Cth3;
 load Outex10_Gth3;
 load Outex10_2Gath3;
@@ -60,7 +61,7 @@ for i=1:picNum;
     Grayx = im2double(Grayy);
     Gray = (Grayx-mean(Grayx(:)))/std(Grayx(:))*20+128; % image normalization, to remove global intensity
 
-%  原始图像
+%  the corresponding multi-scale threshold of original image
        threC = Outex10_Cth3(:,:,i);
        % threM =Outex10_M28th3(:,:,i);
        % threM =Outex10_M18th3(:,:,i);
@@ -72,7 +73,7 @@ for i=1:picNum;
        [UM0] = FindUniform(LSP_I,P);
 
 
-%  梯度图像
+%  %  the corresponding multi-scale threshold of gradient image
        threG = Outex10_Gth3(:,:,i);
        % threMG =Outex10_MG28th3(:,:,i);
        % threMG =Outex10_MG18th3(:,:,i);
@@ -86,7 +87,7 @@ for i=1:picNum;
        [UMG] = FindUniform(LSP_IG,P);
 
 
-%高斯图像
+%the corresponding multi-scale threshold of Gaussian image
        threGa = Outex10_2Gath3(:,:,i);
        % threMGa =Outex10_M2Ga28th3(:,:,i);
        % threMGa =Outex10_M2Ga18th3(:,:,i);
@@ -110,33 +111,33 @@ for i=1:picNum;
       end
         GrayGa = Image_S(:,:,3);
         [LSP_Ga,LCP_Ga] = CMDSP(GrayGa,R,P,patternMappingriu2,'x',threGa,threMGa);
+
+       % Determines if the pattern is uniform 
          [UMGa] = FindUniform(LSP_Ga,P);
 
 
-
-      
+         % multi-domain central pattern
      MDCP = 2^0*LCP_I + 2^1*LCP_Ga + 2^2*LCP_G;
+     %  multi-domain shrinkage assessment pattern
      MDSAP = 2^0*UM0 + 2^1*UMG + 2^2*UMGa;
     % *********************************************************************      
-    % Generate histogram of 原始图像压缩模式
+    % Generate histogram of SAP_IOS
     LSP_IH(i,:) = hist(LSP_I(:),0:patternMappingriu2.num-1);
-     % Generate histogram of 梯度图像压缩模式
+     % Generate histogram of SAP_IGrS
     LSP_GH(i,:) = hist(LSP_IG(:),0:patternMappingriu2.num-1);
-     % Generate histogram of 高斯图像压缩模式   
+     % Generate histogram of SAP_IGaS
     LSP_GaH(i,:) = hist(LSP_Ga(:),0:patternMappingriu2.num-1);
     
-
+  % Generate histogram of multi-domain central pattern
      MDCPH= hist(MDCP(:),0:8-1);
      MDCPHH(i,:) = MDCPH;
  
-
+ % Generate histogram of multi-domain shrinkage assessment pattern
      MDSAPH= hist(MDSAP(:),0:8-1);
      MDSAPHH(i,:) = MDSAPH;
 
-
-
-
-     %寻找统一模式最多的压缩模式SelectP。
+     %The shrinkage pattern (SelectP) with the most unified patterns is selected
+    % OSP in the paper
        CM0 = find(LSP_I==P+1);
        [xM0,yM0]=size(CM0);
        CMG = find(LSP_IG==P+1);
@@ -157,11 +158,12 @@ for i=1:picNum;
        end
 
 
-
+% Generate histogram of OSP
  OSPH(i,:) = hist(SelectP(:),0:patternMappingriu2.num-1);
 
 
-
+% The finally fused features Multi_M which is defined as CMDSP_OS/A/C in
+% the paper; Generate histogram (CMDSPH) of Multi_M
     Multi_M = [SelectP(:),MDCP(:),MDSAP(:)];
     num1 = patternMappingriu2.num;
     num2 = 8;
@@ -170,7 +172,7 @@ for i=1:picNum;
     num_pix =size(LSP_I(:));
        for idx = 1:num_pix
           Hist3D(Multi_M(idx,1)+1,Multi_M(idx,2)+1,Multi_M(idx,3)+1) = Hist3D(Multi_M(idx,1)+1,Multi_M(idx,2)+1,Multi_M(idx,3)+1)+1;
-     end
+       end
      Multi_MHH = reshape(Hist3D,1,numel(Hist3D));
      CMDSPH(i,:) = Multi_MHH;
 
@@ -186,6 +188,9 @@ testTxt = sprintf('%s000\\test.txt', rootpic);
 [testIDs, testClassIDs] = ReadOutexTxt(testTxt);
 % 
 
+
+% the classification result of MDCP
+% we reported the result in table 2 in the paper 
 trains = MDCPHH(trainIDs,:);
 tests = MDCPHH(testIDs,:);
 trainNum = size(trains,1);
@@ -199,7 +204,8 @@ end
 CP_MDCP=ClassifyOnNN(DM_MDCP,trainClassIDs,testClassIDs)
 
 
-
+% the classification result of MDSAP
+% we reported the result in table 2 in the paper 
 trains = MDSAPHH(trainIDs,:);
 tests = MDSAPHH(testIDs,:);
 trainNum = size(trains,1);
@@ -214,8 +220,8 @@ CP_MDSAP=ClassifyOnNN(DM_MDSAP,trainClassIDs,testClassIDs)
 
 
 
-
-
+% the classification result of OSP
+% we reported the result in table 2 in the paper 
 trains = OSPH(trainIDs,:);
 tests = OSPH(testIDs,:);
 trainNum = size(trains,1);
@@ -230,7 +236,8 @@ CP_OSP=ClassifyOnNN(DM_OSP,trainClassIDs,testClassIDs)
 
 
 
-
+% the classification result of CMDSP
+% we reported the result in table 2 and table 3 in the paper
 trains = CMDSPH(trainIDs,:);
 tests = CMDSPH(testIDs,:);
 trainNum = size(trains,1);
