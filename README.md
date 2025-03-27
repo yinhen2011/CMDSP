@@ -22,6 +22,7 @@ Reproduce the experimental results for the paper:
 
 You also can download the Outex_TC_00010 dataset from http://www.outex.oulu.fi/index.php?page=classification;
 Or you can download the Outex_TC_00010 dataset from Baidu cloud disk link(permanent)-- https://pan.baidu.com/s/1QikrYrFDDOHeoZ31cXscTQ?pwd=tdnk extraction code: tdnk 
+
 In the downloaded file 'Outex_TC_00010', the sub-file 'images' includes all the training and test images, and the sub-file '000' incudes the documents specifying the split of the training and test sets.
 
 UIUC dataset can download from https://slazebni.cs.illinois.edu//.
@@ -29,8 +30,11 @@ UIUC dataset can download from https://slazebni.cs.illinois.edu//.
 UMD dataset can download from https://users.umiacs.umd.edu/~fer/High-resolution-data-base/hr_database.htm
 
 Run DomeCodesForOutex10_CMDSP.m to reproduce the reported results. We have added detailed comments to the source code and uploaded the pre-generated multi-scale thresholds for reproducibility. 
+
 Our proposed method is implemented in CMDSP.m, which is a function that implements the LCP and LSP in the paper. 
+
 Cth_3.m and Mth18_3.m are used for generate multi-scale thresholds for LCP and LSP. Before running DomeCodesForOutex10_CMDSP.m, it is need to run Cth_3.m and Mth18_3.m. 
+
 FindUniform.m is used to determine whether the binary pattern is uniform or not, and if it is, it is set to 1, otherwise it is set to 0. It is from the Uniformity Optimization Mechanism (UOM) in the paper.
 
 ## Citation
