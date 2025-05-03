@@ -2,15 +2,15 @@
 [![DOI](https://zenodo.org/badge/951099404.svg)](https://doi.org/10.5281/zenodo.15049533)
 The source code is for the paper:
 
-Enhanced Texture Classification through a Completed Multi-Domain Shrinkage Pattern,
+CMDSP: A completed multi-domain shrinkage pattern for texture image classification,
 
-by Bin Li, Xiaochun Xu, and Q.M.Jonathan Wu
+by Bin Li, Xiaochun Xu
 
-The Visual Computer, 2025,
+PeerJ Computer Science, 2025,
 
 libin126email@126.com；xuxiaochun0303@126.com
 
-version 1.0 (2025.3)
+version 1.0 (2025.5)
 
 ==================================================
 
