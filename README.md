@@ -42,9 +42,9 @@ FindUniform.m is used to determine whether the binary pattern is uniform or not,
 Please consider citing our paper, if you found our work interesting and useful.
 ```
 @article{CMDSP,
-  title={Enhanced Texture Classification through a Completed Multi-Domain Shrinkage Pattern},
-  author={Bin Li, Xiaochun Xu, and Q.M.Jonathan Wu},
-  journal={The Visual computer},
+  title={CMDSP: A completed multi-domain shrinkage pattern for texture image classification},
+  author={Bin Li, Xiaochun Xu},
+  journal={PeerJ Computer Science},
   url={https://github.com/yinhen2011/CMDSP/},
   year={2025}
 }
