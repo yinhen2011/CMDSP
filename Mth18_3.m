@@ -1,8 +1,8 @@
 % This code is used to generate the multiscale threshold corresponding to
 % LSP
 
-% It is from the thre_N,dp in the paper Enhanced Texture Classification through a Completed Multi-Domain Shrinkage Pattern by Bin Li*, Xiaochun Xu,* , and Q.M.Jonathan Wu,
-% which is submitted to The Visual Computer
+% It is from the thre_N,dp in the paper CMDSP: A completed multi-domain shrinkage pattern for texture image classification by Bin Li, Xiaochun Xu,
+% which is submitted to PeerJ Computer Science
 
 
 

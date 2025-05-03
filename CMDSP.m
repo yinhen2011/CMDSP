@@ -1,7 +1,7 @@
 
 %This is a function that implements the LCP and LSP 
-% in the paper Enhanced Texture Classification through a Completed Multi-Domain Shrinkage Pattern by Bin Li*, Xiaochun Xu,* , and Q.M.Jonathan Wu,
-% which is submitted to The Visual Computer
+% in the paper CMDSP: A completed multi-domain shrinkage pattern for texture image classification by Bin Li, Xiaochun Xu,
+% which is submitted to PeerJ Computer Science
 % for example [LSP_I,LCP_I] = CMDSP(Gray,R,P,patternMappingriu2,'x',threC,threM); 
 % Gray is the image; R and P is the radius and the number of neighbors
 % threC  and threM is the the corresponding multi-scale threshold of LCP and LSP
